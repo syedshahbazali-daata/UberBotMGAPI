@@ -19,7 +19,13 @@ def index():
 
 @app.route("/api/users")
 def get_users():
-    return get_data_from_json()
+    try:
+        return get_data_from_json()
+    except Exception as e:
+        return {"status": "error",
+                "message": str(e)}
+        
+    
 
 
 # ask for parameters (EMAIL, COMPANY) to create a new user
