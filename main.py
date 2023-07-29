@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify
 import json
 from datetime import datetime
 
@@ -20,15 +20,10 @@ def index():
 @app.route("/api/users")
 def get_users():
     try:
-        return get_data_from_json()
+        return jsonify(get_data_from_json())
     except Exception as e:
         return {"status": "error",
                 "message": str(e)}
-
-
-@app.route("/api/all_users")
-def get_all_users():
-    return []
 
 
 @app.route("/api/create_user/<email>/<company>")
