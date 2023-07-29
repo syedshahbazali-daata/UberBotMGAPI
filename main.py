@@ -24,11 +24,13 @@ def get_users():
     except Exception as e:
         return {"status": "error",
                 "message": str(e)}
-        
-    
 
 
-# ask for parameters (EMAIL, COMPANY) to create a new user
+@app.route("/api/users")
+def get_all_users():
+    return []
+
+
 @app.route("/api/create_user/<email>/<company>")
 def create_user(email, company):
     if "@" not in email:
@@ -86,4 +88,4 @@ def update_user(email):
 
 
 if __name__ == "__main__":
-    app.run(port=5000, host="0.0.0.0",debug=True)
+    app.run(port=5000, host="0.0.0.0", debug=True)
