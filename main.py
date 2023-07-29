@@ -12,6 +12,11 @@ def get_data_from_json():
 
 
 # REST API
+@app.route("/")
+def index():
+    return "Hello World"
+
+
 @app.route("/api/users")
 def get_users():
     return get_data_from_json()
