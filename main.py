@@ -26,7 +26,7 @@ def get_users():
                 "message": str(e)}
 
 
-@app.route("/api/users")
+@app.route("/api/all_users")
 def get_all_users():
     return []
 
