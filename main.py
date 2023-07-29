@@ -82,5 +82,22 @@ def update_user(email):
     return {"message": "email not found"}
 
 
+@app.route("/api/delete_user/<email>")
+def delete_user(email):
+    if "@" not in email:
+        return {"message": "wrong email"}
+
+    users_data = get_data_from_json()
+    for single_user_data in users_data:
+        if single_user_data['email'] == email:
+            users_data.remove(single_user_data)
+            with open(f"users-data.json", "w", encoding='utf-8') as f:
+                json.dump(users_data, f, indent=4)
+
+            return {"message": "success"}
+
+    return {"message": "email not found"}
+
+
 if __name__ == "__main__":
     app.run(port=5000, host="0.0.0.0", debug=True)
